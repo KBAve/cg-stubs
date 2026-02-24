@@ -34,3 +34,16 @@ for file in sorted(outdir.glob("*.pyi")):
     file.write_text(text)
 
 # FIXME: also need to replace PySide2.QtWidgets.QWidget with PySide2.QtCore.QObject in delete_ui_element
+
+# FIXME: Some stubs have type hints like "arg: str = None", where a non-optional type is given
+#    a default argument of None.
+#
+#     def import_project_resource(file_path: str, resource_usage: Usage, name: str = None, group: str = None) -> Resource: ...  # type: ignore[assignment]
+#     def import_session_resource(file_path: str, resource_usage: Usage, name: str = None, group: str = None) -> Resource: ...  # type: ignore[assignment]
+#
+# This type error is present in the substance python files as well, but we should fix it:
+#
+#     def import_project_resource(file_path: str,
+#                                 resource_usage: Usage,
+#                                 name: str = None,
+#                                 group: str = None) -> Resource:

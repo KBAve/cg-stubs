@@ -13,7 +13,7 @@ plus a version suffix for the revision of the stubs.
 
 ## Generating
 
-`stubgen_substance_painter.sh` requires preliminary steps before it can be run. Do these two tasks:
+`stubgen_substance_painter.py` requires preliminary steps before it can be run. Do these two tasks:
 
 ### Extract stubs from running Substance Painter
 
@@ -54,3 +54,5 @@ uv run --directory substance_painter stubgen --no-import $SUBSTANCE_PAINTER_ROOT
 ```
 nox -s 'generate(substance_painter)'
 ```
+
+(A note--this is not idempotent. Your stub folders will be renamed from `substance_painter` to `substance_painter-stubs`, so running it again won't find the `substance_painter` folder.)
